@@ -75,14 +75,14 @@ class RealtimePlotWindow:
         self.counter += 1
         t_current = time.time()
         self.t_diff = t_current - self.t_prev
-        self.NoDivZero(data)
+        self.SampleRateChecker(data)
         print("%f,%f,%f,%f,%f" % (self.timestamp, self.t_prev, t_current,self.t_diff, self.fs_av))
         self.t_prev = t_current #previously used time.time() here
         self.timestamp += (1 / self.samplingRate) 
         
 
         
-    def NoDivZero(self, data): 
+    def SampleRateChecker(self, data): 
         if (self.t_diff == 0):
             pass
         elif (self.t_diff != 0): 
